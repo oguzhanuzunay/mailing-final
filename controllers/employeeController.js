@@ -2,6 +2,7 @@ const express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
 const Employee = mongoose.model('Employee');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 router.get('/', (req, res) => {
   res.render('adminPage/addOrEdit', {

@@ -4,6 +4,8 @@ const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
 const bodyparser = require('body-parser');
+const Handlebars = require('handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const employeeController = require('./controllers/employeeController');
 const loginController = require('./controllers/loginController');
@@ -17,6 +19,10 @@ app.use(bodyparser.urlencoded({
 }));
 app.use(bodyparser.json());
 
+app.engine('handlebars', exphbs({
+    handlebars: allowInsecurePrototypeAccess(Handlebars)
+}));
+app.set('view engine', 'handlebars');
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('view engine', 'hbs');
 
