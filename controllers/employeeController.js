@@ -64,7 +64,7 @@ router.get('/list', (req, res) => {
     } else {
       console.log('Error in retrieving User list :' + err);
     }
-  });
+  }).lean();
 });
 
 function handleValidationError(err, body) {
