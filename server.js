@@ -20,8 +20,11 @@ app.use(bodyparser.json());
 app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: 'mainLayout', layoutsDir: __dirname + '/views/layouts/' }));
 app.set('view engine', 'hbs');
 
-app.listen(3000, () => {
-    console.log('Express server started at port : 3000');
+
+
+var port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log('Express server started at port : 8080');
 });
 
 app.use('/adminPage', employeeController);
